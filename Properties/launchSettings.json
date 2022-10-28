@@ -10,19 +10,21 @@
   "profiles": {
     "metaproapp": {
       "commandName": "Project",
+     
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7208;http://localhost:5185",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      
       }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+     
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+        "ASPNETCORE_ENVIRONMENT": "Development"
+       
       }
     }
   }
