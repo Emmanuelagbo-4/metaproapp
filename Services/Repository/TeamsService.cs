@@ -9,11 +9,12 @@ namespace metaproapp.Services.Repository
 {
     public class TeamsService : IteamsService
     {
-
-        private readonly ApplicationDbContext _dbContext;
-        public TeamsService(ApplicationDbContext dbContext)
+        private readonly IGenericRepository<Team> _teamRepo;
+       
+        public TeamsService(IGenericRepository<Team> teamRepo)
         {
-            _dbContext = dbContext;
+           
+            _teamRepo = teamRepo;
         }
         public ServiceResponse CreateTeams(CreateTeamsRequestModel model)
         {
@@ -24,13 +25,12 @@ namespace metaproapp.Services.Repository
                 Number = model.Number,
                 DateCreated = DateTime.Now
             };
-
-            var data = _dbContext.Add(teamsObj).Entity;
-            var status = _dbContext.SaveChanges() > 0 ? true : false;
+            
+             bool status = _teamRepo.Insert(teamsObj) > 0 ? true : false;
 
             if (status)
             {
-                return new ServiceResponse {status = true, message = "Created Teams successfullly", data = data};
+                return new ServiceResponse {status = true, message = "Created Teams successfullly", data = teamsObj};
             }
 
             return new ServiceResponse {status = false, message = "faile to create teams"};
