@@ -17,7 +17,16 @@ namespace metaproapp.Data
 
         public T Get(long id)
         {
-            return entities.SingleOrDefault(x => x.Id == id);
+            var entity = entities!.SingleOrDefault(x => x.Id == id);
+
+            if (entity != null)
+            {
+                return entity;
+            }
+
+            return null;
+            // _dbContext.SaveChanges();
+            // return entities!.SingleOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<T> GetAll()
@@ -45,14 +54,28 @@ namespace metaproapp.Data
             _dbContext.SaveChanges();
         }
 
-        public void Delete(T entity)
+
+        public bool Delete(long id)
         {
-            if (entity == null)
+            var entity = entities!.SingleOrDefault(x => x.Id == id);
+            // var entity = await _dbContext.FindAsync(id);
+            if (entity != null)
             {
-                throw new ArgumentNullException("entity");
+                _dbContext.Remove(entity);
+                _dbContext.SaveChanges();
+                return true;
             }
-            entities.Remove(entity);
-            _dbContext.SaveChanges();
+            return false;
         }
+
+        // public void Delete(T entity)
+        // {
+        //     if (entity == null)
+        //     {
+        //         throw new ArgumentNullException("entity");
+        //     }
+        //     entities.Remove(entity);
+        //     _dbContext.SaveChanges();
+        // }
     }
 }

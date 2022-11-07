@@ -8,6 +8,6 @@ namespace metaproapp.Data
         T Get(long id);  
         int Insert(T entity);  
         void Update(T entity);  
-        void Delete(T entity); 
+        bool Delete(long id); 
     }
 }
