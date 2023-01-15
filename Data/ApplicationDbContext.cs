@@ -14,7 +14,7 @@ namespace metaproapp.Data
         
         DbSet<ApplicationUser> ApplicationUsers {get; set;}
         DbSet<Team> Teams {get; set;}
-      
+        DbSet<Payment> Payments {get; set;}
         
     }
 }
