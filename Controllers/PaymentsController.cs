@@ -57,8 +57,8 @@ namespace metaproapp.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id}")]
+        
         public async Task<IActionResult> GetPaymentById(long id)
         {
             var response = _paymentsService.GetPaymentById(id);
@@ -79,7 +79,7 @@ namespace metaproapp.Controllers
          public async Task<IActionResult> DeletePayment(long id) 
         {
             var response =  _paymentsService.DeletePayment(id);
-
+            
             if (response.status)
             {
                 

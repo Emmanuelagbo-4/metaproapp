@@ -65,7 +65,7 @@ namespace metaproapp.Services.Repository
 
         public ServiceResponse GetAllTeams()
         {
-            var teams = _teamRepo.GetAll<Teams>();
+            var teams = _teamRepo.GetAll();
             if (teams!=null) 
             {
                 return new ServiceResponse {status = true, message = "Fetched Teams Successfully", data = teams};

@@ -16,6 +16,7 @@ opt.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IteamsService, TeamsService>();
+builder.Services.AddScoped<IpaymentsService, PaymentsService>();
 
 builder.Services.AddSwaggerGen(c =>
 {

@@ -66,7 +66,7 @@ namespace metaproapp.Services.Repository
 
         public ServiceResponse GetAllPayments()
         {
-            var payments = _paymentRepo.GetAll<Payments>();
+            var payments = _paymentRepo.GetAll();
             if (payments!=null) 
             {
                 return new ServiceResponse {status = true, message = "Fetched Payment Successfully", data = payments};
